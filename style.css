@@ -1,0 +1,137 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background: #f1eaec;
+  color: #333;
+  margin: 0 10px;
+}
+
+h1 {
+  color: #d63384;
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;         
+  justify-content: center; 
+  gap: 20px;                 
+  padding-bottom: 100px; /* para não cobrir conteúdo pelo som fixo */
+}
+
+.mensagem {
+  font-style: italic;
+  margin: 20px;
+  font-size: 1.1em;
+}
+
+#sound {
+  position: fixed;
+  bottom: 20px;           
+  left: 50%;                
+  transform: translateX(-50%);
+  padding: 10px;
+  width: 325px;
+  max-width: 90vw; /* adapta largura para telas pequenas */
+  border-radius: 50px;
+  background-color: #333;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.foto {
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.foto img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.descricao {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.8s ease;
+  opacity: 0;
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.foto:hover {
+  transform: translateY(-5px);
+}
+
+.foto:hover .descricao {
+  max-height: 150px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+/* Estilos gerais já ajustados conforme antes */
+
+@media (max-width: 828px) {
+  body {
+    margin: 0 12px; /* mais espaçamento lateral para conforto */
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-top: 16px;
+  }
+
+  .mensagem {
+    font-size: 1.05em;
+    margin: 18px 0;
+  }
+
+  .galeria {
+    gap: 16px;
+    padding-bottom: 120px; /* espaço para player fixo */
+  }
+
+  .foto {
+    width: 40vw; /* duas fotos por linha com espaço */
+  }
+
+  .foto img {
+    height: auto;
+    max-height: 280px; /* ajustado para ficar proporcional */
+    border-radius: 10px;
+  }
+
+  #sound {
+    width: 50vw;
+    padding: 10px;
+    bottom: 16px;
+    box-sizing: border-box;
+  }
+}
+
+/* Para telas ainda menores, manter os ajustes mais compactos */
+
+@media (max-width: 480px) {
+  .foto {
+    width: 90vw;
+  }
+
+  .foto img {
+    max-height: 200px;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  #sound {
+    width: 95vw;
+    padding: 8px;
+    bottom: 10px;
+  }
+}
