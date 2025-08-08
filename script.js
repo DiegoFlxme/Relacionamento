@@ -49,16 +49,6 @@ document.querySelectorAll('.foto').forEach(foto => {
   }
 });
 
-  document.addEventListener('touchstart', playAudioOnce, { once: true });
-document.addEventListener('click', playAudioOnce, { once: true });
-
-function playAudioOnce() {
-  const audio = document.querySelector('#sound audio');
-  if (audio) {
-    audio.play().catch(() => {}); // ignora erros de autoplay
-  }
-}
-
 function atualizarContador() {
   const now = new Date();
 
@@ -117,3 +107,4 @@ function atualizarContador() {
 atualizarContador();
 // Atualiza a cada segundo
 setInterval(atualizarContador, 1000);
+
