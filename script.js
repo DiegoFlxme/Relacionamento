@@ -23,6 +23,33 @@ document.querySelectorAll('.foto video').forEach(video => {
     document.msFullscreenElement ? setContain() : setCover();
   });
 });
+
+document.querySelectorAll('.foto').forEach(foto => {
+  foto.addEventListener('click', function(e) {
+    // Evita fechar ao clicar dentro da descrição
+    if (e.target.classList.contains('descricao')) return;
+    this.classList.toggle('show-descricao');
+  });
+  // Se houver vídeo, também alterna ao clicar no vídeo (para mobile)
+  const video = foto.querySelector('video');
+  if (video) {
+    video.addEventListener('click', function(e) {
+      e.stopPropagation(); // Evita conflito com o clique na div
+      foto.classList.toggle('show-descricao');
+    });
+  }
+});
+
+  document.addEventListener('touchstart', playAudioOnce, { once: true });
+document.addEventListener('click', playAudioOnce, { once: true });
+
+function playAudioOnce() {
+  const audio = document.querySelector('#sound audio');
+  if (audio) {
+    audio.play().catch(() => {}); // ignora erros de autoplay
+  }
+}
+
 function atualizarContador() {
   const now = new Date();
 
@@ -76,14 +103,6 @@ function atualizarContador() {
 
   document.getElementById("contador").textContent = texto;
 }
-
-  document.querySelectorAll('.foto').forEach(foto => {
-    foto.addEventListener('click', function(e) {
-      // Evita fechar ao clicar dentro da descrição
-      if (e.target.classList.contains('descricao')) return;
-      this.classList.toggle('show-descricao');
-    });
-  });
 
 // Executa ao iniciar
 atualizarContador();
