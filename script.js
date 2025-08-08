@@ -25,17 +25,19 @@ document.querySelectorAll('.foto video').forEach(video => {
 });
 
 document.querySelectorAll('.foto').forEach(foto => {
-  foto.addEventListener('click', function(e) {
-    // Evita fechar ao clicar dentro da descrição
-    if (e.target.classList.contains('descricao')) return;
-    this.classList.toggle('show-descricao');
-  });
-  // Se houver vídeo, também alterna ao clicar no vídeo (para mobile)
-  const video = foto.querySelector('video');
-  if (video) {
-    video.addEventListener('click', function(e) {
-      e.stopPropagation(); // Evita conflito com o clique na div
+  // Alterna descrição ao clicar no botão dos vídeos
+  const btn = foto.querySelector('.btn-descricao');
+  if (btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       foto.classList.toggle('show-descricao');
+      btn.textContent = foto.classList.contains('show-descricao') ? 'Ocultar descrição' : 'Mostrar descrição';
+    });
+  } else {
+    // Para imagens, mantém o clique na foto
+    foto.addEventListener('click', function(e) {
+      if (e.target.classList.contains('descricao')) return;
+      this.classList.toggle('show-descricao');
     });
   }
 });
