@@ -138,7 +138,7 @@ h1 {
   .foto img,
   .foto video {
     width: 100%;
-    height: auto;           /* Mostra a imagem inteira */
+    height: 700px;           /* Mostra a imagem inteira */
     max-height: none;
     object-fit: contain;    /* Garante que nada seja cortado */
     border-radius: 10px;
@@ -156,4 +156,5 @@ h1 {
     bottom: 10px;
   }
 }
+
 
