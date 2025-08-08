@@ -70,9 +70,9 @@ h1 {
 .descricao {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.8s ease, opacity 0.8s ease;
+  transition: max-height 0.8s ease, opacity 0.4s ease;
   opacity: 0;
-  margin: 0;
+  margin-top: 8px;
   font-size: 14px;
   color: #555;
 }
@@ -133,15 +133,23 @@ h1 {
 
 @media (max-width: 480px) {
   .foto {
-    width: 90vw;
-    max-width: none; /* ocupar quase toda a largura */
-    height: auto; /* altura automática para manter proporção */
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
     object-fit: cover;
-    margin-bottom: 20px; /* mais espaço entre fotos */
+    margin-bottom: 20px;
+    padding: 0;
   }
 
-  .foto img {
-    max-height: 200px;
+  .foto img,
+  .foto video {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border-radius: 10px;
+    display: block;
+    margin: 0;
+    object-fit: cover;
   }
 
   h1 {
