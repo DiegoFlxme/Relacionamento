@@ -1,5 +1,28 @@
 const startDate = new Date("2025-06-10T00:00:00");
 
+
+document.querySelectorAll('.foto video').forEach(video => {
+  function setContain() {
+    video.style.objectFit = 'contain';
+  }
+  function setCover() {
+    video.style.objectFit = 'cover';
+  }
+
+  // Eventos para diferentes navegadores
+  video.addEventListener('fullscreenchange', () => {
+    document.fullscreenElement ? setContain() : setCover();
+  });
+  video.addEventListener('webkitfullscreenchange', () => {
+    document.webkitFullscreenElement ? setContain() : setCover();
+  });
+  video.addEventListener('mozfullscreenchange', () => {
+    document.mozFullScreenElement ? setContain() : setCover();
+  });
+  video.addEventListener('msfullscreenchange', () => {
+    document.msFullscreenElement ? setContain() : setCover();
+  });
+});
 function atualizarContador() {
   const now = new Date();
 
