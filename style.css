@@ -155,7 +155,24 @@ h1 {
     padding: 8px;
     bottom: 10px;
   }
+
+    .foto.show-descricao .descricao {
+  max-height: 150px;
+  opacity: 1;
+  margin-top: 8px;
 }
+  .descricao {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease, opacity 0.4s ease;
+    opacity: 0;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #555;
+
+  }
+}
+
 
 
 
