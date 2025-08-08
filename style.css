@@ -27,17 +27,12 @@ h1 {
 }
 
 #sound {
-  position: fixed;
-  bottom: 20px;           
-  left: 50%;                
-  transform: translateX(-50%);
-  padding: 10px;
+  margin: 20px auto;
   width: 325px;
-  max-width: 90vw; /* adapta largura para telas pequenas */
+  max-width: 90vw;
   border-radius: 50px;
   background-color: #333;
-  box-sizing: border-box;
-  z-index: 10;
+  padding: 10px;
 }
 
 .foto {
