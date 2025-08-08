@@ -38,7 +38,26 @@ document.querySelectorAll('.foto').forEach(foto => {
       foto.classList.toggle('show-descricao');
     });
   }
+
+  const btn = foto.querySelector('.btn-descricao');
+  if (btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      foto.classList.toggle('show-descricao');
+      btn.textContent = foto.classList.contains('show-descricao') ? 'Ocultar descrição' : 'Mostrar descrição';
+    });
+  }
 });
+
+  document.addEventListener('touchstart', playAudioOnce, { once: true });
+document.addEventListener('click', playAudioOnce, { once: true });
+
+function playAudioOnce() {
+  const audio = document.querySelector('#sound audio');
+  if (audio) {
+    audio.play().catch(() => {}); // ignora erros de autoplay
+  }
+}
 
 function atualizarContador() {
   const now = new Date();
