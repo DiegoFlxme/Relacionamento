@@ -50,6 +50,7 @@ h1 {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  display: block;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -80,14 +81,13 @@ h1 {
   transform: translateY(-5px);
 }
 
-.foto:hover .descricao {
+.foto.show-descricao .descricao {
   max-height: 150px;
   opacity: 1;
   margin-top: 8px;
 }
 
 
-/* Estilos gerais já ajustados conforme antes */
 
 @media (max-width: 828px) {
   body {
@@ -111,6 +111,8 @@ h1 {
 
   .foto {
     width: 40vw; /* duas fotos por linha com espaço */
+    max-width: 250px; /* não ficar muito grande em telas médias */
+    object-fit: cover;
   }
 
   .foto img {
@@ -132,6 +134,10 @@ h1 {
 @media (max-width: 480px) {
   .foto {
     width: 90vw;
+    max-width: none; /* ocupar quase toda a largura */
+    height: auto; /* altura automática para manter proporção */
+    object-fit: cover;
+    margin-bottom: 20px; /* mais espaço entre fotos */
   }
 
   .foto img {
