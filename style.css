@@ -73,10 +73,6 @@ h1 {
   color: #555;
 }
 
-.foto:hover {
-  transform: translateY(-5px);
-}
-
 .foto.show-descricao .descricao {
   max-height: 150px;
   opacity: 1;
