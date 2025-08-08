@@ -1,6 +1,6 @@
 const startDate = new Date("2025-06-10T00:00:00");
 
-
+// Ajuste object-fit do vídeo em fullscreen
 document.querySelectorAll('.foto video').forEach(video => {
   function setContain() {
     video.style.objectFit = 'contain';
@@ -9,7 +9,6 @@ document.querySelectorAll('.foto video').forEach(video => {
     video.style.objectFit = 'cover';
   }
 
-  // Eventos para diferentes navegadores
   video.addEventListener('fullscreenchange', () => {
     document.fullscreenElement ? setContain() : setCover();
   });
@@ -24,21 +23,8 @@ document.querySelectorAll('.foto video').forEach(video => {
   });
 });
 
+// Só o botão mostra/oculta a descrição
 document.querySelectorAll('.foto').forEach(foto => {
-  foto.addEventListener('click', function(e) {
-    // Evita fechar ao clicar dentro da descrição
-    if (e.target.classList.contains('descricao')) return;
-    this.classList.toggle('show-descricao');
-  });
-  // Se houver vídeo, também alterna ao clicar no vídeo (para mobile)
-  const video = foto.querySelector('video');
-  if (video) {
-    video.addEventListener('click', function(e) {
-      e.stopPropagation(); // Evita conflito com o clique na div
-      foto.classList.toggle('show-descricao');
-    });
-  }
-
   const btn = foto.querySelector('.btn-descricao');
   if (btn) {
     btn.addEventListener('click', function(e) {
@@ -59,7 +45,6 @@ function atualizarContador() {
   let minutos = now.getMinutes() - startDate.getMinutes();
   let segundos = now.getSeconds() - startDate.getSeconds();
 
-  // Corrigir valores negativos (emprestar de unidades maiores)
   if (segundos < 0) {
     segundos += 60;
     minutos--;
@@ -73,27 +58,23 @@ function atualizarContador() {
     dias--;
   }
   if (dias < 0) {
+    meses--;
     const ultimoMes = new Date(now.getFullYear(), now.getMonth(), 0);
     dias += ultimoMes.getDate();
-    meses--;
   }
   if (meses < 0) {
     meses += 12;
     anos--;
   }
 
-  // Função para definir singular/plural
   function formatarUnidade(valor, singular, plural) {
-    return `${valor} ${valor === 1 ? singular : plural}`;
+    return valor === 1 ? `${valor} ${singular}` : `${valor} ${plural}`;
   }
 
   let texto = "";
-
-  // Só mostrar "anos" se passou de 12 meses completos
   if (anos >= 1) {
     texto += formatarUnidade(anos, "ano", "anos") + ", ";
   }
-
   texto += formatarUnidade(meses, "mês", "meses") + ", ";
   texto += formatarUnidade(dias, "dia", "dias") + ", ";
   texto += `${String(horas).padStart(2, '0')}h : `;
@@ -103,8 +84,5 @@ function atualizarContador() {
   document.getElementById("contador").textContent = texto;
 }
 
-// Executa ao iniciar
 atualizarContador();
-// Atualiza a cada segundo
 setInterval(atualizarContador, 1000);
-
