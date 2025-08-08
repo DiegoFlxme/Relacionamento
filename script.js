@@ -54,6 +54,14 @@ function atualizarContador() {
   document.getElementById("contador").textContent = texto;
 }
 
+  document.querySelectorAll('.foto').forEach(foto => {
+    foto.addEventListener('click', function(e) {
+      // Evita fechar ao clicar dentro da descrição
+      if (e.target.classList.contains('descricao')) return;
+      this.classList.toggle('show-descricao');
+    });
+  });
+
 // Executa ao iniciar
 atualizarContador();
 // Atualiza a cada segundo
