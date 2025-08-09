@@ -86,3 +86,54 @@ function atualizarContador() {
 
 atualizarContador();
 setInterval(atualizarContador, 1000);
+
+// Player customizado estilo Spotify
+document.addEventListener('DOMContentLoaded', function() {
+  const audio = document.getElementById('audio');
+  const playPause = document.getElementById('play-pause');
+  const playPauseIcon = document.getElementById('play-pause-icon');
+  const progressBar = document.getElementById('progress-bar');
+  const currentTime = document.getElementById('current-time');
+  const duration = document.getElementById('duration');
+
+  function formatTime(sec) {
+    sec = Math.floor(sec);
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  }
+
+  // Atualiza duração quando o áudio carrega
+  audio.addEventListener('loadedmetadata', () => {
+    duration.textContent = formatTime(audio.duration);
+    progressBar.max = Math.floor(audio.duration);
+  });
+
+  // Atualiza barra e tempo atual enquanto toca
+  audio.addEventListener('timeupdate', () => {
+    progressBar.value = Math.floor(audio.currentTime);
+    currentTime.textContent = formatTime(audio.currentTime);
+  });
+
+  // Permite arrastar a barra para mudar o tempo
+  progressBar.addEventListener('input', () => {
+    audio.currentTime = progressBar.value;
+  });
+
+  // Play/Pause
+  playPause.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+
+  audio.addEventListener('play', () => {
+    playPauseIcon.src = "https://img.icons8.com/ios-filled/36/d63384/pause--v1.png";
+  });
+
+  audio.addEventListener('pause', () => {
+    playPauseIcon.src = "https://img.icons8.com/ios-filled/36/d63384/play--v1.png";
+  });
+});
