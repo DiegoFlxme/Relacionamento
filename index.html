@@ -16,10 +16,24 @@
 
   <p class="mensagem">"Você é o meu amor, minha vida, minha paz, meu lar."</p>
 
-  <div id="sound">
-    <audio controls>
-        <source src="assets/Lisboa.mp3" type="audio/mp3">
-    </audio>
+  <!-- Player estilo Spotify -->
+  <div class="spotify-player-custom">
+    <img class="spotify-cover-custom" src="./images/test/liboa.jpg" alt="Lisboa - Anavitória">
+    <div class="spotify-info">
+      <div class="spotify-title">Lisboa</div>
+      <div class="spotify-artist">Anavitória</div>
+      <div class="spotify-progress-row">
+        <span class="spotify-time" id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="250" step="1">
+        <span class="spotify-time" id="duration">4:10</span>
+      </div>
+      <div class="spotify-controls">
+        <button class="spotify-btn play" id="play-pause">
+          <img id="play-pause-icon" src="https://img.icons8.com/ios-filled/36/d63384/play--v1.png" alt="Play/Pause">
+        </button>
+      </div>
+    </div>
+    <audio id="audio" src="assets/Lisboa.mp3"></audio>
   </div>
 
   <h2>Nossas memórias</h2>
@@ -88,6 +102,7 @@
         </div>
         
     </div>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
